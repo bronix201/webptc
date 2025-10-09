@@ -20,7 +20,7 @@
              <nav class="header-nav" aria-label="Navegación principal">
                  <a class="btn-nav" href="index.html">Inicio</a>
                  <a class="btn-nav" href="requisitos.html">Requisitos</a>
-                 <a class="btn-nav active" href="contactos.html">Contacto</a>
+                 <a class="btn-nav active" href="contacto.html">Contacto</a>
                  <a class="btn-nav" href="servicios.html">Servicios</a>
              </nav>
          </header>
@@ -30,7 +30,7 @@
         <div class="row justify-content-center">
             <div class="col-lg-8">
                 <section class="mb-5 requirement-card p-4">
-                    <form action="#" method="POST">
+                    <form id="contactForm" novalidate>
                         <div class="mb-3">
                             <label for="nombreCompleto" class="form-label">Nombre Completo</label>
                             <input type="text" 
@@ -47,19 +47,37 @@
                         </div>
                         <div class="mb-3">
                             <label for="numeroTelefono" class="form-label">Número de teléfono</label>
-                            <input type="tel" class="form-control" id="numeroTelefono">
+                            <div class="input-group">
+                                <select class="form-select bg-dark text-white" id="countryCode" style="max-width: 120px;" required>
+                                    <option value="+503" selected>+503 (SV)</option>
+                                    <option value="+502">+502 (GT)</option>
+                                    <option value="+504">+504 (HN)</option>
+                                    <option value="+505">+505 (NI)</option>
+                                    <option value="+507">+507 (PA)</option>
+                                </select>
+                                <input type="tel" 
+                                       class="form-control" 
+                                       id="numeroTelefono" 
+                                       required
+                                       maxlength="8" 
+                                       pattern="[0-9]{8}"
+                                       title="Solo 8 dígitos numéricos.">
+                            </div>
+                            <small class="form-text text-muted">Máximo 8 dígitos después del código de área.</small>
                         </div>
                         <div class="mb-3">
                             <label for="comentarios" class="form-label">Comentarios</label>
-                            <textarea class="form-control" id="comentarios" rows="4"></textarea>
+                            <textarea class="form-control" id="comentarios" rows="4" required></textarea>
                         </div>
                         
                         <div class="d-grid gap-2 d-md-flex justify-content-md-center mt-4">
-                            <button type="submit" class="btn btn-yellow px-4 py-2">Enviar Mensaje</button>
-                            <button type="reset" class="btn btn-danger px-4 py-2">Limpiar Campos</button>
+                            <button type="submit" class="btn btn-yellow px-4 py-2 w-100">Enviar Mensaje</button>
                         </div>
                     </form>
                 </section>
+                <div id="successMessage" class="alert alert-success mt-4 text-center d-none" role="alert">
+                    **¡Mensaje Enviado con Éxito!** Gracias por contactarnos, responderemos pronto.
+                </div>
             </div>
         </div>
 
@@ -70,7 +88,7 @@
             <p class="text-muted mb-4">Avenida Aguilares 218 San Salvador CP, San Salvador 1101</p>
             <div class="map-placeholder border border-warning">
                 <iframe 
-                    src="https://maps.google.com/?cid=14669331163626866657&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQ" 
+                    src="https://www.google.com/maps/@13.7229183,-89.2051921,17z?entry=ttu&g_ep=EgoyMDI1MTAwNi4wIKXMDSoASAFQAw%3D%3D" 
                     width="100%" 
                     height="400" 
                     style="border:0;" 
@@ -79,12 +97,46 @@
                     title="Ubicación del Instituto Técnico Ricaldone">
                 </iframe>
             </div>
-             <a href="https://maps.google.com/?cid=14669331163626866657&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQ" target="_blank" class="btn btn-nav mt-3">Ver en Google Maps</a>
+             <a href="https://www.google.com/maps/@13.7229183,-89.2051921,17z?entry=ttu&g_ep=EgoyMDI1MTAwNi4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="btn btn-nav mt-3">Ver en Google Maps</a>
         </section>
 
     </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="script.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('contactForm');
+    const successMessage = document.getElementById('successMessage');
+    const inputPhone = document.getElementById('numeroTelefono');
+
+    inputPhone.addEventListener('input', function() {
+
+        this.value = this.value.replace(/\D/g, '');
+    });
+
+    form.addEventListener('submit', function(event) {
+        event.preventDefault(); 
+        successMessage.classList.add('d-none'); 
+
+        if (!form.checkValidity()) {
+            event.stopPropagation();
+            form.classList.add('was-validated');
+            return;
+        }
+
+        successMessage.classList.remove('d-none'); 
+        successMessage.scrollIntoView({ behavior: 'smooth' }); 
+
+        setTimeout(() => {
+            form.reset();
+            form.classList.remove('was-validated');
+            successMessage.classList.add('d-none'); 
+        }, 3000); 
+    });
+});
+</script>
+
     <footer class="footer-custom">
         <div class="footer-social">
             <span>Síguenos en nuestras redes sociales:</span>
