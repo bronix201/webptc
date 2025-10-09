@@ -28,8 +28,6 @@ body {
     transition: background var(--transition-medium) ease;
 }
 
-/* --- HEADER Y NAVEGACIÓN --- */
-
 .header-custom {
     background-color: #0A0A0A;
     padding-top: 2rem;
@@ -39,7 +37,6 @@ body {
     border-bottom: 1px solid rgba(255, 215, 0, 0.2);
     position: relative;
     overflow: hidden;
-    /* Asegura que los títulos se apilen correctamente */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -54,7 +51,6 @@ body {
     letter-spacing: 2px;
     text-shadow: 0 0 12px rgba(255, 215, 0, 0.7), 0 0 30px rgba(255, 215, 0, 0.3);
     transition: all 0.3s ease-in-out;
-    /* Ajuste para apilamiento */
     line-height: 1.1; 
 }
 
@@ -64,7 +60,6 @@ body {
     letter-spacing: 10px;
     text-shadow: 0 0 20px rgba(255, 255, 255, 0.9), 0 0 40px rgba(255, 215, 0, 0.6);
     transform: translateY(-8px) scale(1.05);
-    /* Ajuste para apilamiento */
     margin-top: -0.5rem;
     margin-bottom: -0.5rem;
 }
@@ -99,7 +94,6 @@ body {
     text-decoration: none;
 }
 
-/* --- ESTILO GENERAL DE SECCIONES --- */
 
 .container {
     padding-top: 2rem;
@@ -112,7 +106,6 @@ h2, h3, h4 {
 
 .text-yellow { color: #FFD700 !important; }
 
-/* --- CARRUSEL --- */
 
 .carousel-item img {
     max-height: 100%;
@@ -137,7 +130,7 @@ h2, h3, h4 {
     border-radius: 5px;
 }
 
-/* --- TARJETAS (MISIÓN, VISIÓN, ITEC) --- */
+
 
 .card {
     border: none;
@@ -192,7 +185,6 @@ h2, h3, h4 {
     font-size: 1.35rem;
 }
 
-/* --- SERVICIOS (servicios.html) --- */
 
 .section-title {
     font-size: 2rem;
@@ -239,7 +231,7 @@ h2, h3, h4 {
     font-size: 0.9rem;
 }
 
-/* --- REQUISITOS (requisitos.html) --- */
+
 
 .requirement-card {
     background: #111111;
@@ -258,10 +250,10 @@ h2, h3, h4 {
 .requirement-list {
     list-style: none;
     padding-left: 0;
-     width: 50%; /* Debe tener un ancho definido */
+     width: 50%; 
   margin-left: auto;
   margin-right: auto;
-  /* O la forma corta: */
+
   margin: 0 auto; 
 }
 
@@ -289,8 +281,6 @@ h2, h3, h4 {
 .device-img:hover {
     transform: scale(1.05);
 }
-
-/* --- CONTACTO (contacto.html) --- */
 
 .form-label {
     color: #FFD700;
@@ -331,7 +321,6 @@ h2, h3, h4 {
     box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
 }
 
-/* --- ACCENT CIRCLES (contacto.html) --- */
 
 .circle-accent {
     position: absolute;
@@ -350,13 +339,11 @@ h2, h3, h4 {
     to { opacity: 0.5; transform: scale(1.1); }
 }
 
-/* --- RESPONSIVE ADJUSTMENTS --- */
+
 @media (max-width: 992px) {
     .titulo-personalizado, .titulo-personalizado2 { font-size: 2.8rem; }
     .titulo-middle { font-size: 3.2rem; }
-    /* Ajuste para que las imágenes sean más flexibles en tabletas */
     .card-side-img { max-height: 250px; } 
-    /* Se asegura que en tabletas el borde derecho de la imagen esté redondeado */
     .col-md-6:last-child .card-side-img {
         border-top-right-radius: 15px;
         border-bottom-right-radius: 15px;
@@ -369,17 +356,15 @@ h2, h3, h4 {
     .titulo-middle { font-size: 2.4rem; }
     .card-side-img { 
         max-height: 180px; 
-        width: 100%; /* La imagen debe ser de ancho completo en móviles */
-        border-radius: 15px 15px 0 0 !important; /* Bordes redondeados en la parte superior del móvil */
+        width: 100%;
+        border-radius: 15px 15px 0 0 !important; 
     }
     .section-title { font-size: 2rem; }
-    /* En móviles, se deshace la altura 100% en las columnas para que las imágenes no se estiren */
     .row.g-0.align-items-center > div {
         height: auto;
     }
 }
 
-/* keep header-nav top-right for most screens; only center it on very small devices */
 @media (max-width: 420px) {
     .header-nav {
         position: static;
@@ -391,7 +376,7 @@ h2, h3, h4 {
         top: auto;
     }
 }
-/* --- ANIMATION CSS FOR SCROLL REVEAL (script.js) --- */
+
 
 .scroll-reveal {
     opacity: 0;
@@ -403,7 +388,7 @@ h2, h3, h4 {
     opacity: 1;
     transform: translateY(0);
 }
-/* Header scrolled state (JS toggles this) */
+
 .header-custom.scrolled {
     padding-top: 0.6rem;
     padding-bottom: 0.6rem;
@@ -420,14 +405,12 @@ h2, h3, h4 {
     transform: translateY(-4px) scale(1.0);
 }
 
-/* active nav button */
 .btn-nav.active {
     background: #FFD700;
     color: #0A0A0A;
     box-shadow: 0 6px 18px rgba(255,215,0,0.35);
 }
 
-/* --- FOOTER --- */
 .footer-custom {
     background: #161616;
     color: #FFD700;
