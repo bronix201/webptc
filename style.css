@@ -39,24 +39,34 @@ body {
     border-bottom: 1px solid rgba(255, 215, 0, 0.2);
     position: relative;
     overflow: hidden;
+    /* Asegura que los títulos se apilen correctamente */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .titulo-personalizado, .titulo-personalizado2 {
     color: #FFD700;
-    font-size: 2.6rem; /* reduced */
+    font-size: 2.6rem; 
     font-weight: 900;
     text-transform: uppercase;
     letter-spacing: 2px;
     text-shadow: 0 0 12px rgba(255, 215, 0, 0.7), 0 0 30px rgba(255, 215, 0, 0.3);
     transition: all 0.3s ease-in-out;
+    /* Ajuste para apilamiento */
+    line-height: 1.1; 
 }
 
 .titulo-middle {
     color: #FFFFFF;
-    font-size: 3rem; /* reduced */
+    font-size: 3rem; 
     letter-spacing: 10px;
     text-shadow: 0 0 20px rgba(255, 255, 255, 0.9), 0 0 40px rgba(255, 215, 0, 0.6);
     transform: translateY(-8px) scale(1.05);
+    /* Ajuste para apilamiento */
+    margin-top: -0.5rem;
+    margin-bottom: -0.5rem;
 }
 
 .header-nav {
@@ -105,11 +115,17 @@ h2, h3, h4 {
 /* --- CARRUSEL --- */
 
 .carousel-item img {
-    max-height: 75vh;
+    max-height: 100%;
     object-fit: cover;
     border-radius: 10px;
     box-shadow: 0 0 25px rgba(255, 215, 0, 0.3);
     border: 1px solid rgba(255, 215, 0, 0.2);
+    height: auto; 
+    display: block;
+    max-width: 1200px;
+    width: 90%;
+    margin: 0 auto; 
+    padding: 20px; 
 }
 
 .carousel-caption h5 {
@@ -139,13 +155,33 @@ h2, h3, h4 {
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7), 0 0 25px rgba(255, 215, 0, 0.6);
 }
 
+
 .card-side-img {
-    max-height: 220px;
+    height: 100%; 
     object-fit: cover;
-    background-color: #000000;
-    padding: 14px;
-    border-radius: 15px;
+
+    background-color: transparent;
+    padding: 0;
+    border-radius: 0; 
 }
+
+
+.col-md-6:last-child .card-side-img {
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+
+.col-md-6:first-child .card-body {
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+
+
+.row.g-0.align-items-center > div {
+    height: 100%;
+}
+
 
 .card-body h5 {
     color: #FFD700;
@@ -222,6 +258,11 @@ h2, h3, h4 {
 .requirement-list {
     list-style: none;
     padding-left: 0;
+     width: 50%; /* Debe tener un ancho definido */
+  margin-left: auto;
+  margin-right: auto;
+  /* O la forma corta: */
+  margin: 0 auto; 
 }
 
 .requirement-list li {
@@ -236,7 +277,7 @@ h2, h3, h4 {
     content: '>>';
     color: #FFD700;
     font-weight: bold;
-    display: inline-block;
+    display: center;
     width: 1.5em;
     margin-left: -1.5em;
 }
@@ -313,14 +354,29 @@ h2, h3, h4 {
 @media (max-width: 992px) {
     .titulo-personalizado, .titulo-personalizado2 { font-size: 2.8rem; }
     .titulo-middle { font-size: 3.2rem; }
+    /* Ajuste para que las imágenes sean más flexibles en tabletas */
+    .card-side-img { max-height: 250px; } 
+    /* Se asegura que en tabletas el borde derecho de la imagen esté redondeado */
+    .col-md-6:last-child .card-side-img {
+        border-top-right-radius: 15px;
+        border-bottom-right-radius: 15px;
+    }
 }
 
 @media (max-width: 768px) {
     .btn-nav { padding: 8px 12px; font-size: 0.9rem; }
     .titulo-personalizado, .titulo-personalizado2 { font-size: 2rem; }
     .titulo-middle { font-size: 2.4rem; }
-    .card-side-img { max-height: 180px; }
+    .card-side-img { 
+        max-height: 180px; 
+        width: 100%; /* La imagen debe ser de ancho completo en móviles */
+        border-radius: 15px 15px 0 0 !important; /* Bordes redondeados en la parte superior del móvil */
+    }
     .section-title { font-size: 2rem; }
+    /* En móviles, se deshace la altura 100% en las columnas para que las imágenes no se estiren */
+    .row.g-0.align-items-center > div {
+        height: auto;
+    }
 }
 
 /* keep header-nav top-right for most screens; only center it on very small devices */
@@ -369,4 +425,28 @@ h2, h3, h4 {
     background: #FFD700;
     color: #0A0A0A;
     box-shadow: 0 6px 18px rgba(255,215,0,0.35);
+}
+
+/* --- FOOTER --- */
+.footer-custom {
+    background: #161616;
+    color: #FFD700;
+    text-align: center;
+    padding: 2rem 0 1rem 0;
+    margin-top: 3rem;
+    border-top: 2px solid #FFD700;
+    font-size: 1.1rem;
+}
+.footer-social {
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+}
+.footer-social a {
+    color: #FFD700;
+    font-size: 2rem;
+    margin: 0 0.7rem;
+    transition: color 0.3s;
+}
+.footer-social a:hover {
+    color: #FFC107;
 }
