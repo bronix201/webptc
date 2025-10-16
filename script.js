@@ -34,3 +34,34 @@ document.addEventListener('DOMContentLoaded', () => {
         if (href === path) a.classList.add('active');
     });
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('contactForm');
+    const successMessage = document.getElementById('successMessage');
+    const inputPhone = document.getElementById('numeroTelefono');
+
+    inputPhone.addEventListener('input', function() {
+
+        this.value = this.value.replace(/\D/g, '');
+    });
+
+    form.addEventListener('submit', function(event) {
+        event.preventDefault(); 
+        successMessage.classList.add('d-none'); 
+
+        if (!form.checkValidity()) {
+            event.stopPropagation();
+            form.classList.add('was-validated');
+            return;
+        }
+
+        successMessage.classList.remove('d-none'); 
+        successMessage.scrollIntoView({ behavior: 'smooth' }); 
+
+        setTimeout(() => {
+            form.reset();
+            form.classList.remove('was-validated');
+            successMessage.classList.add('d-none'); 
+        }, 3000); 
+    });
+});
